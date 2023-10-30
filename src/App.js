@@ -1,5 +1,4 @@
 import './App.css'
-
 import Countries from './components/Countries'
 
 // Replace your code here

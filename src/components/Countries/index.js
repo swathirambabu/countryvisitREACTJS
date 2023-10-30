@@ -77,67 +77,71 @@ const initialCountriesList = [
     name: 'Venezuela',
     imageUrl:
       'https://assets.ccbp.in/frontend/react-js/visit-countries-venezuela-img.png',
-    isVisited:   false,
+    isVisited: false,
   },
 ]
 
+class Countries extends Component {
+  state = {countryList: initialCountriesList}
 
-class Countries extends Component{
-state={countryList:initialCountriesList}
-}
+  clickOnVisitBtn = id => {
+    const {countryList} = this.state
+    const visitCountry = countryList.map(each => {
+      if (each.id === id) {
+        const updatedListItem = {...each, isVisited: !each.isVisited}
+        return updatedListItem
+      }
+      return each
+    })
+    this.setState({countryList: visitCountry})
+  }
 
- clickOnVisitBtn=id=>{
-     const{countryList}=this.state
-     const visitCountry=countryList.map(each=>{
-         if(each.id===id){
-             const updatedListItem={...each,isVisited:!each.isVisited,
-            }
-            return updatedListItem
-         }
-         return each
-     })
-     this.setState({countryList:visitCountry})
- }
-
- onClickRemove=id=>{
-     const{countryList}=this.state
-     const removeCountry=countryList.map(each=>{
-         if(each.id===id){
-             const removeItem={...each,isVisited:!each.isVisited,
-            }
-            return removeItem
-         }
-         return each
-     })
-     this.setState({countryList:removeCountry})
- }
+  onClickRemove = id => {
+    const {countryList} = this.state
+    const removeCountry = countryList.map(each => {
+      if (each.id === id) {
+        const removeItem = {...each, isVisited: !each.isVisited}
+        return removeItem
+      }
+      return each
+    })
+    this.setState({countryList: removeCountry})
+  }
 
   render() {
-    const {countryList}=this.state
-    const updatedList=countryList.filter(each=>each.isVisited===true,)
-    return(
-        <MainContainer>
-            <h1 className="countries-heading">Countries</h1>
-            <ul className="list">
-                {countryList.map(each=>(
-                    <CountriesList key={each.id} details={each} clickOnVisitBtn={this.clickOnVisitBtn}/>
-                ))}
-            </ul>
+    const {countryList} = this.state
+    const updatedList = countryList.filter(each => each.isVisited === true)
+    return (
+      <MainContainer>
+        <h1 className="countries-heading">Countries</h1>
+        <ul className="list">
+          {countryList.map(each => (
+            <CountriesList
+              key={each.id}
+              details={each}
+              clickOnVisitBtn={this.clickOnVisitBtn}
+            />
+          ))}
+        </ul>
 
-            <h1 className="countries-heading">Visited Countries</h1>
-            {updatedList.length===0?(
-                <div className="no-countries">
-                    <p className="countries-heading">No Countries Visited Yet!</p>
-                </div>
-            ):(
-                <ul className="visit-list">
-                    {countryList.map(each=>(
-                        <VisitedCountries key={each.id} details={each} onClickRemove={this.onClickRemove}/>
-                    ))}
-                </ul>
-            )}
-        </MainContainer>
-        )
+        <h1 className="countries-heading">Visited Countries</h1>
+        {updatedList.length === 0 ? (
+          <div className="no-countries">
+            <p className="countries-heading">No Countries Visited Yet!</p>
+          </div>
+        ) : (
+          <ul className="visit-list">
+            {countryList.map(each => (
+              <VisitedCountries
+                key={each.id}
+                details={each}
+                onClickRemove={this.onClickRemove}
+              />
+            ))}
+          </ul>
+        )}
+      </MainContainer>
     )
+  }
 }
 export default Countries
