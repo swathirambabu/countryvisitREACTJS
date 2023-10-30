@@ -88,7 +88,10 @@ class Countries extends Component {
     const {countryList} = this.state
     const visitCountry = countryList.map(each => {
       if (each.id === id) {
-        const updatedListItem = {...each, isVisited: !each.isVisited}
+        const updatedListItem = {
+          ...each,
+          isVisited: !each.isVisited,
+        }
         return updatedListItem
       }
       return each
@@ -100,7 +103,10 @@ class Countries extends Component {
     const {countryList} = this.state
     const removeCountry = countryList.map(each => {
       if (each.id === id) {
-        const removeItem = {...each, isVisited: !each.isVisited}
+        const removeItem = {
+          ...each,
+          isVisited: !each.isVisited,
+        }
         return removeItem
       }
       return each
