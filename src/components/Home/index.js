@@ -10,7 +10,7 @@ import {
   VisitedCountries,
   VisitedListDisplay,
   ListItem1,
-  EmptyHeader,
+  EmptyPara,
   ItemBox,
   ThumbItem,
   NameBox,
@@ -111,9 +111,7 @@ class Home extends Component {
               )}
             </VisitedListDisplay>
           ) : (
-            list.length === 0 && (
-              <EmptyHeader>No Countries Visited Yet</EmptyHeader>
-            )
+            list.length === 0 && <EmptyPara>No Countries Visited Yet</EmptyPara>
           )}
         </VisitedCountries>
       </AppComponent>

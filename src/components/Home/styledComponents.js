@@ -58,7 +58,7 @@ export const ListItem1 = styled.li`
   flex-direction: column;
   width: 30%;
 `
-export const EmptyHeader = styled.p`
+export const EmptyPara = styled.p`
   color: #ffffff;
   font-weight: bold;
   font-size: 16px;
